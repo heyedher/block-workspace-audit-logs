@@ -1,24 +1,24 @@
 constant: WORKSPACE_ANALYTICS_CONNECTION_NAME {
-  value: "bigquery"
+  value: "default_bigquery_connection"
   export: override_required
 }
 
 constant: WORKSPACE_ANALYTICS_PROJECT_ID {
-  value: "GCP Project ID"
+  value: "cymbal-roadmap-bq-logs"
   export: override_required
 }
 
 constant: WORKSPACE_ANALYTICS_DATASET_NAME {
-  value: "GCP BigQuery Dataset Name"
+  value: "roadmap_cymbal_dev"
   export: override_required
 }
 
 constant: WORKSPACE_ANALYTICS_PRIMARY_DOMAIN {
-  value: "MY_PRIMARY_DOMAIN.COM"
+  value: "roadmap.cymbal.dev"
   export: override_required
 }
 
 constant: WORKSPACE_ANALYTICS_SECONDARY_DOMAINS {
-  value: "MY_SECONDARY_DOMAIN_1.COM,MY_SECONDARY_DOMAIN_2.COM,..."
+  value: "ca.gcpdemos.com,child.eskudemo1.gcpdemos.com,eskudemo1.gcpdemos.com,eskudemo1gcpdemos.onmicrosoft.com,newfoo.eskudemo1.gcpdemos.com,o365.eskudemo1.gcpdemos.com,test.roadmap.cymbal.dev,test1.eskudemo1.gcpdemos.com,eskudemo1.gcpdemos.com"
   export: override_required
 }
