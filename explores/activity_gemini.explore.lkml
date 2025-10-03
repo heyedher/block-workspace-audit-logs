@@ -8,6 +8,3 @@ explore: gemini {
   from: gemini
   always_filter: { filters: [activity.record_type: "gemini_for_workspace"] }
 }
-
-
-explore: dimensionalized {}
