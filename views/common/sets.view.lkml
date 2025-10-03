@@ -103,4 +103,22 @@ view: sets {
       activity.rules__matched_trigger
     ]
   }
+
+  set: activity_gemini_users {
+    fields: [
+      activity.email,
+      activity.count,
+      activity.count_actions,
+      activity.count_apps
+    ]
+  }
+
+  set: activity_gemini_apps {
+    fields: [
+      activity.app_name,
+      activity.count,
+      activity.count_actions,
+      activity.count_user
+    ]
+  }
 }
