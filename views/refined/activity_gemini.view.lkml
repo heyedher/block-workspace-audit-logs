@@ -72,11 +72,24 @@ view: gemini {
 
   dimension: event_category {
     view_label: "Gemini"
-    label: "Event Category"
     description: "Categorizes the type of generative AI action event, such as 'active_generate' for direct user interactions or 'inactive' which represents a category where the user is not considered to be actively engaging with Gemini."
-    hidden: no
     type: string
     sql: ${TABLE}.gemini_for_workspace.event_category ;;
+  }
+
+  dimension: event_category_split {
+    view_label: "Gemini"
+    label: "Event Category"
+    description: "Summarized event category existing dimension in 2 active and inactive"
+    hidden: no
+    type: string
+    case: {
+      when: {
+        sql: CONTAINS_SUBSTR(${event_category}, "active_");;
+        label: "Active"
+      }
+      else: "Inactive"
+    }
   }
 
   measure: count_apps {
