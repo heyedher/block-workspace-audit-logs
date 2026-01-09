@@ -209,37 +209,6 @@ view: gemini {
     drill_fields: [drill_details*]
   }
 
-  measure: count_user {
-    label: "Active Gemini Users"
-    type: count_distinct
-    sql: ${email} ;;
-    drill_fields: [drill_details*]
-  }
-
-  # --- POP PERIOD OVER PERIOD LOGIC ---
-
-  measure: count_last_month {
-    hidden: no
-    view_label: "Gemini"
-    label: "Count of Events Last Month"
-    type: period_over_period
-    based_on: count
-    based_on_time: activity_date
-    period: month
-    kind: previous
-  }
-
-  measure: count_users_last_month {
-    hidden: no
-    view_label: "Gemini"
-    label: "Count of Users Last Month"
-    type: period_over_period
-    based_on: count_user
-    based_on_time: activity_date
-    period: month
-    kind: previous
-  }
-
   measure: count_sources {
     hidden: no
     label: "Count of Source"
@@ -249,6 +218,15 @@ view: gemini {
     allow_approximate_optimization: yes
     sql: ${feature_source} ;;
   }
+
+  measure: count_user {
+    label: "Active Gemini Users"
+    type: count_distinct
+    sql: ${email} ;;
+    drill_fields: [drill_details*]
+  }
+
+  # --- POP PERIOD OVER PERIOD LOGIC ---
 
   filter: date_filter {
     hidden: no
