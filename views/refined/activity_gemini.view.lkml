@@ -5,8 +5,6 @@ include: "activity.view"
 view: gemini {
   extends: [activity]
 
-  # --- DRILL DOWN SET DEFINITION ---
-  # This defines the columns shown when clicking on a chart
   set: drill_details {
     fields: [
       activity.email,
@@ -325,8 +323,6 @@ view: gemini {
   dimension: wtd_only {hidden:yes}
 }
 
-# --- INTERNAL SIDECAR VIEW ---
-# Kept in the same file as per your original structure
 view: workspace_benchmark_sidecar {
   derived_table: {
     sql:
@@ -369,7 +365,6 @@ view: gemini_app_penetration {
     sql:
       WITH universe_counts AS (
         SELECT
-          -- Dynamic SQL: Prepares data to match the chosen dimension
           {% if analysis_grain._parameter_value == 'total' %}
              NULL as activity_date,
           {% else %}
@@ -438,7 +433,6 @@ view: gemini_app_penetration {
     description: "Choose 'Total Period' for summary or a Trend option for time series."
     default_value: "week"
 
-    # Values match BigQuery DATE_TRUNC keywords
     allowed_value: { label: "" value: "total" }
     allowed_value: { label: "Daily Trend" value: "day" }
     allowed_value: { label: "Weekly Trend" value: "week" }
@@ -446,8 +440,6 @@ view: gemini_app_penetration {
   }
 
   # DIMENSIONS ---
-
-  # Raw dimension from SQL
   dimension: activity_raw {
     hidden: yes
     type: date
@@ -481,8 +473,6 @@ view: gemini_app_penetration {
 
   dimension: dynamic_date {
     label_from_parameter: analysis_grain
-
-    # We inject the correct dimension using Liquid
     sql:
     {% if analysis_grain._parameter_value == 'month' %}
       ${activity_month}
